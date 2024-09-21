@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background: radial-gradient(circle, #ffe6b3, #ffd1dc);
+  font-family: 'Cursive', sans-serif;
+  overflow: hidden;
+  text-align: center;
+}
+
+h1 {
+  color: #ff4081;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.flower-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 20px;
+  width: 80vw;
+  height: 70vh;
+  padding: 20px;
+  justify-content: center;
+}
+
+.flower {
+  width: 100px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer; /* Indica que las flores son clickeables */
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+.petal, .center {
+  stroke: black;
+  stroke-width: 2;
+}
+
+.petal {
+  fill: #ffeb3b;
+  animation: rotate 10s infinite ease-in-out;
+  transform-origin: 50px 50px;
+}
+
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.center {
+  fill: #ff5722;
+}
+
+.stem {
+  stroke: #388e3c;
+  stroke-width: 4;
+}
+
+/* Animación para los emojis que caen */
+.emoji {
+  position: absolute;
+  font-size: 2rem;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+      transform: translateY(50px);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(100vh);
+      opacity: 0;
+  }
+}
+
+/* Estilo para la imagen que se muestra al hacer clic */
+#imagen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: auto;
+  border: 2px solid black;
+  display: none; /* Oculto inicialmente */
+  z-index: 999; /* Asegurarse que esté por encima de otros elementos */
+}
+
+/* Animación para mostrar la imagen */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+#imagen.show {
+  display: block;
+  animation: fadeIn 1s ease-in-out;
+}
